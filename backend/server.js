@@ -11,7 +11,7 @@ const app = express()
 
 app.use(cors({
     origin: process.env.CLIENT_URL || "http://localhost:5173",
-    Credential: true
+    credential: true
 }))
 
 app.use(express.json())
@@ -19,5 +19,14 @@ app.use(cookieParser())
 
 app.use("/api/auth", authRoutes)
 
-const port = process.env.PORT || 5000
+app.get("/", (req, res) => {
+  res.status(200).json({
+    message: "Backend server is running successfully",
+  });
+});
 
+const PORT = process.env.PORT || 5000
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server is running on port ${PORT}`);
+});
