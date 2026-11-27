@@ -9,8 +9,13 @@ dotenv.config()
 
 const app = express()
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://frontend-7qme.onrender.com",
+];
+
 app.use(cors({
-    origin: "https://frontend-7qme.onrender.com",
+    origin: allowedOrigins,
     credentials: true
 }))
 

@@ -22,7 +22,7 @@ const Home = ({ user, error }) => {
 
             <h1 className="text-2xl font-semibold tracking-tight text-slate-900">
               Welcome,{" "}
-              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 bg-clip-text font-bold text-transparent">
+              <span className="bg-linear-to-r from-blue-600 via-indigo-600 to-cyan-500 bg-clip-text font-bold text-transparent">
                 {user.name}
               </span>
               !
