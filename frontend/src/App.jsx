@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api/axios";
 import {BrowserRouter as Router, Routes, Route, Navigate,} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -7,7 +7,6 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./components/NotFound";
 
-axios.defaults.withCredentials = true;
 
 function App() {
   const [user, setUser] = useState(null);
@@ -17,7 +16,7 @@ function App() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get("/api/auth/getme");
+        const res = await api.get("/api/auth/getme");
         setUser(res.data);
       } catch (err) {
         setUser(null);

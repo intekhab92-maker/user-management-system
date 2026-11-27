@@ -7,18 +7,20 @@ import { middleware } from "../middleware/auth.js"
 
 const router = express.Router()
 
-const cookieOptions = ({
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: 'lax',
-    maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days
-})
+
+const cookieOptions = {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  maxAge: 30 * 24 * 60 * 60 * 1000,
+};
 
 const generateToken = (id) => {
-    return jwt.sign({id}, process.env.JWT_SECRET, {
-        expiresIn: '30d'
-    })
-}
+  return jwt.sign({ id }, 
+    process.env.JWT_SECRET,
+     { expiresIn: "30d" });
+};
+
 
 // register user
 router.post("/register", async (req, res)=> {
