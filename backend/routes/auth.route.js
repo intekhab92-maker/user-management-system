@@ -13,6 +13,7 @@ const cookieOptions = {
   secure: process.env.NODE_ENV === "production",
   sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
   maxAge: 30 * 24 * 60 * 60 * 1000,
+  path: "/",
 };
 
 const generateToken = (id) => {
@@ -91,8 +92,8 @@ router.get("/getme", middleware, async(req, res)=>{
 
 
 //logout
-router.get("/logout", (req, res)=>{
-    res.cookie('token', '', {...cookieOptions, maxAge: 1})
+router.get("/logout", async(req, res)=>{
+    res.clearCookie('token', {...cookieOptions})
     res.json({message: "Logout Successfully"})
 })
 

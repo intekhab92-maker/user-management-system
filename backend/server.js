@@ -19,11 +19,7 @@ app.use(cookieParser())
 
 app.use("/api/auth", authRoutes)
 
-app.get("/", (req, res) => {
-  res.status(200).json({
-    message: "Backend server is running successfully",
-  });
-});
+
 
 const PORT = process.env.PORT || 5000
 
