@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../api/axios";
+import api from "./api/axios";
 import {BrowserRouter as Router, Routes, Route, Navigate,} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
