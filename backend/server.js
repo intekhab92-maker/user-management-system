@@ -11,7 +11,7 @@ const app = express()
 
 app.use(cors({
     origin: "https://frontend-7qme.onrender.com",
-    credential: true
+    credentials: true
 }))
 
 app.use(express.json())
